@@ -51,6 +51,7 @@ nav {
 nav img {
   height: 80px; /* Adjust this value to make the logo bigger */
   width: auto;
+  margin-left: 70px;
 }
 
 .navigation {
@@ -188,4 +189,8 @@ footer {
   text-align: center;
   padding: 1rem;
   margin-top: auto;
+}
+
+footer p {
+  color: rgb(0, 0, 0);
 }

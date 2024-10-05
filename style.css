@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+/* Default Navbar for larger screens (including laptops) */
 nav {
   display: flex;
   align-items: center;
@@ -27,7 +28,7 @@ nav {
 nav img {
   height: 60px;
   width: auto;
-  margin-left: 20px; /* Reduce the left margin for smaller screens */
+  margin-left: 70px; 
 }
 
 .navigation {
@@ -51,6 +52,70 @@ nav img {
   background-color: #b3b6b7;
   border-radius: 20px;
 }
+
+/* Mobile View (Overlay) */
+@media screen and (max-width: 768px) {
+  .nav-items {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(228, 228, 243, 0.95); /* Overlay background with transparency */
+    width: 100%;
+    max-width: 300px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-items.active {
+    display: flex; /* Show the nav items when the menu is toggled */
+  }
+
+  .nav-items a {
+    padding: 15px;
+    border-bottom: 1px solid #b3b6b7;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: navy;
+  }
+}
+
+/* Small Screens (Under 480px) */
+@media screen and (max-width: 480px) {
+  nav img {
+    height: 50px;
+  }
+
+  .nav-items {
+    gap: 10px;
+  }
+}
+
+/* Show the full menu on laptop view */
+@media screen and (min-width: 769px) {
+  .menu-icon {
+    display: none; /* Hide the menu icon on laptop and larger screens */
+  }
+
+  .nav-items {
+    display: flex; /* Show the nav items by default on larger screens */
+    position: static;
+    width: auto;
+    background: none;
+    flex-direction: row; /* Horizontal alignment */
+  }
+
+  .nav-items a {
+    padding: 10px 15px;
+  }
+}
+
 
 #home {
   background-image: linear-gradient(rgba(9, 5, 54, 0.3), rgba(5, 4, 46, 0.7)),
@@ -163,20 +228,16 @@ nav img {
 }
 
 .home-container {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(220px, 1fr)
-  ); /* Responsive grid */
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next row if needed */
   justify-content: center;
+  gap: 20px;
   padding: 20px;
 }
 
 .profile-card {
-  position: relative;
-  width: 100%; /* Use full width in grid */
-  max-width: 220px;
+  flex: 1 1 220px; /* Flex-grow, flex-shrink, and min width 220px */
+  max-width: 250px;
   height: auto;
   background-color: #fff;
   padding: 20px;
@@ -184,6 +245,10 @@ nav img {
   box-shadow: -5px 8px 45px rgba(51, 51, 51, 0.126);
   transition: all 0.4s;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-card:hover {
@@ -191,7 +256,6 @@ nav img {
 }
 
 .profile-card .img {
-  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -232,12 +296,14 @@ nav img {
   color: #0c52a1;
   font-weight: 600;
 }
+
 .caption p {
   font-size: 0.8rem;
   font-weight: 500;
   margin: -10px 0 12px;
   color: black;
 }
+
 .caption .social-links {
   margin-top: -10px;
 }
@@ -250,8 +316,37 @@ nav img {
   transition: all 0.4s;
 }
 
-.caption .social-links i:hover {
+.caption .social-links a:hover {
   color: #0c52a1;
+}
+
+/* Flexbox adjustments for responsiveness */
+@media screen and (max-width: 768px) {
+  .profile-card {
+    flex: 1 1 200px;
+  }
+
+  .caption {
+    transform: translateY(-80px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-card {
+    flex: 1 1 160px; /* Allow cards to shrink more on smaller screens */
+  }
+
+  .profile-card:hover img {
+    transform: translateY(-60px);
+  }
+
+  .caption h3 {
+    font-size: 0.9rem;
+  }
+
+  .caption p {
+    font-size: 0.75rem;
+  }
 }
 
 footer {

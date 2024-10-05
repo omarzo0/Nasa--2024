@@ -39,14 +39,7 @@ nav img {
   border-radius: 20px;
 }
 
-::-webkit-scrollbar {
-  width: 11px;
-  background: var(--scroll-bar-color);
-}
-::-webkit-scrollbar-thumb {
-  width: 100%;
-  background: var(--scroll-thumb-color);
-}
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 * {
   margin: 0;

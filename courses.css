@@ -14,23 +14,24 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+/* Default Navbar for larger screens (including laptops) */
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
   background-color: rgb(228, 228, 243);
-  position: fixed; /* Make the navbar fixed */
-  top: 0; /* Stick it to the top */
-  left: 0; /* Align it to the left */
-  width: 100%; /* Full width */
-  z-index: 1000; /* Ensure it stays above other content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 nav img {
-  height: 70px; /* Adjust this value to make the logo bigger */
+  height: 60px;
   width: auto;
-  margin-left: 70px;
+  margin-left: 70px; 
 }
 
 .navigation {
@@ -41,7 +42,6 @@ nav img {
 .nav-items {
   display: flex;
   gap: 15px;
-  margin-right: 52px;
 }
 
 .nav-items a {
@@ -56,6 +56,69 @@ nav img {
   border-radius: 20px;
 }
 
+/* Mobile View (Overlay) */
+@media screen and (max-width: 768px) {
+  .nav-items {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(228, 228, 243, 0.95); /* Overlay background with transparency */
+    width: 100%;
+    max-width: 300px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-items.active {
+    display: flex; /* Show the nav items when the menu is toggled */
+  }
+
+  .nav-items a {
+    padding: 15px;
+    border-bottom: 1px solid #b3b6b7;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: navy;
+  }
+}
+
+/* Small Screens (Under 480px) */
+@media screen and (max-width: 480px) {
+  nav img {
+    height: 50px;
+  }
+
+  .nav-items {
+    gap: 10px;
+  }
+}
+
+/* Show the full menu on laptop view */
+@media screen and (min-width: 769px) {
+  .menu-icon {
+    display: none; /* Hide the menu icon on laptop and larger screens */
+  }
+
+  .nav-items {
+    display: flex; /* Show the nav items by default on larger screens */
+    position: static;
+    width: auto;
+    background: none;
+    flex-direction: row; /* Horizontal alignment */
+  }
+
+  .nav-items a {
+    padding: 10px 15px;
+  }
+}
+
 #data {
   padding: 8vw 8vw 0 8vw;
   text-align: center;
@@ -65,55 +128,89 @@ nav img {
   font-size: 2rem;
   color: rgba(80, 70, 56, 0.714);
 }
+
 #data p {
   color: rgba(63, 56, 46, 0.714);
   font-size: 1.5rem;
   margin-top: 18px;
 }
 
+/* Flexbox container for data sections */
 .data-row {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap; /* Ensure items wrap when there's not enough space */
+  justify-content: space-between; /* Space items evenly */
   align-items: center;
-
+  gap: 20px; /* Add space between each item */
   background-color: white;
   margin-top: 12px;
 }
 
+/* Flexbox items */
 .data-section {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center;
   text-align: center;
-  width: 45%; /* Adjusted width to fit two items in a row */
+  width: 45%; /* Two items per row for larger screens */
   margin: 10px;
   padding: 10px;
-
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
 }
 
-.data-section button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 15px;
-}
-.lear {
-  color: black;
-}
 .data-section img {
   width: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 150px;
   object-fit: cover;
   border-radius: 10px;
-  margin: 0 auto 15px;
+  margin-bottom: 15px;
 }
+
 .data-section p {
   margin-top: 15px;
   font-size: 0.9rem;
   line-height: 22px;
   color: navy;
 }
+
+/* Responsive adjustments for Flexbox */
+@media screen and (max-width: 1024px) {
+  .data-section {
+    width: 45%; /* Two items per row on medium screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .data-section {
+    width: 100%; /* One item per row for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #data h1 {
+    font-size: 1.5rem; /* Reduce heading size */
+  }
+
+  #data p {
+    font-size: 1rem; /* Reduce paragraph size */
+  }
+
+  .data-section {
+    width: 100%; /* One item per row for very small screens */
+    margin: 15px 0;
+  }
+
+  .data-section img {
+    width: 120px; /* Reduce image size */
+    height: 120px;
+  }
+
+  .data-section p {
+    font-size: 0.8rem; /* Reduce paragraph size */
+  }
+}
+
 
 .btn {
   display: inline-block;
