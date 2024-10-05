@@ -16,16 +16,16 @@
     <nav>
         <img src="Planet-removebg-preview.png" alt="Logo">
         <div class="navigation">
+            <i class='bx bx-menu menu-icon'></i> <!-- Menu icon for mobile -->
             <div class="nav-items">
                 <a href="#home"><i class="homenav"></i>Home</a>
                 <a href="courses.html"><i class="learningnav"></i>Learning</a>
                 <a href="#about"><i class="aboutnav"></i>About Us</a>
                 <a href="#contact"><i class="contactnav"></i>Contact Us</a>
-                
-               
             </div>
-
+        </div>
     </nav>
+    
     
     
      <!-- home -->
@@ -140,18 +140,25 @@
     <section id="Learning">
         <a href="courses.html"></a>
     </section>
-    
-    
-    
-
-    
-    
-        
     <footer>
         <div class="container">
             <p>&copy; 2024 Exoplanet Education Project</p>
         </div>
     </footer>
+    
 </body>
-
+<script>
+    window.addEventListener("scroll", function() {
+      const nav = document.querySelector("nav");
+      nav.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  
+    const menuIcon = document.querySelector('.menu-icon');
+    const navItems = document.querySelector('.nav-items');
+  
+    menuIcon.addEventListener('click', () => {
+      navItems.classList.toggle('active');
+    });
+  </script>
+  
 </html>
