@@ -16,7 +16,7 @@
                 <i class='bx bx-menu menu-icon'></i> <!-- Menu icon for mobile -->
 
                 <div class="nav-items">
-                    <a href="index.html"><i class="homenav"></i>Return To Home</a>
+                    <a href="index.html"><i class="homenav"></i>Home</a>
                 </div>
         </nav>
    
@@ -57,4 +57,18 @@
             <p>&copy; 2024 Exoplanet Research Team</p>
         </footer>
 </body>
+<script>
+    window.addEventListener("scroll", function() {
+      const nav = document.querySelector("nav");
+      nav.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  
+    const menuIcon = document.querySelector('.menu-icon');
+    const navItems = document.querySelector('.nav-items');
+  
+    menuIcon.addEventListener('click', () => {
+      navItems.classList.toggle('active');
+    });
+  </script>
+
 </html>
