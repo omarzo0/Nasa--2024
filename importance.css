@@ -185,12 +185,12 @@ section {
 }
 footer {
   background-color: rgb(228, 228, 243);
+  color: black; /* Add !important to ensure the text color stays black */
   text-align: center;
   padding: 1rem;
   margin-top: auto;
 }
 
-footer p
-{
+footer p {
   color: rgb(0, 0, 0);
 }
